@@ -1,5 +1,6 @@
 package _00_Intro_To_String_Methods;
 
+import java.lang.reflect.Array;
 import java.util.Base64;
 
 /*
@@ -34,12 +35,21 @@ public class _01_StringMethods {
 
     // Given Strings s1 and s2, return the longer String
     public static String longerString(String s1, String s2) {
-        return null;
+    	if(s1.length()>s2.length()) {
+    		return s1;
+    	}
+    	else {
+    		return s2;
+    	}
     }
 
     // If String s contains the word "underscores", change all of the spaces
     // to underscores
     public static String formatSpaces(String s) {
+    	if(s.contains("underscores")) {
+    		
+    		
+    	}
         return null;
     }
 
@@ -48,22 +58,43 @@ public class _01_StringMethods {
     // You cannot assume there are no extra spaces around the name, but you can
     // assume there is only one space between the first and last name
     public static String lineLeader(String s1, String s2, String s3) {
+ 
         return null;
     }
 
     // Return the sum of all numerical digits in the String
     public static int numeralSum(String s) {
-        return 0;
+//    	int num;
+//    	String string;
+//    	int sum = 0;
+//    	for(int i = 0; i>s.length();i++) {
+//    		if(Character.isDigit(s.charAt(i))){
+//    			string = s.charAt(i) + " "; 
+//    			num = Integer.parseInt(string);
+//    			sum = sum + num;
+//    		}
+//    	}
+    	return 0;
+
     }
 
     // Return the number of times String substring appears in String s
     public static int substringCount(String s, String substring) {
-        return 0;
+        int numOccurances = 0;
+        int index = s.indexOf(substring);
+        while( index != -1 ) {
+            numOccurances++;
+            index = s.indexOf(substring, index + substring.length());
+        }
+        
+        
+        return numOccurances;
     }
 
     // Call Utilities.encrypt at the bottom of this file to encrypt String s
     public static String encrypt(String s, char key) {
-        return null;
+		return null;
+  
     }
 
     // Call Utilities.decrypt at the bottom of this file to decrypt the
