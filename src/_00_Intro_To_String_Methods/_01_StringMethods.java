@@ -1,6 +1,7 @@
 package _00_Intro_To_String_Methods;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Base64;
 
 /*
@@ -46,11 +47,17 @@ public class _01_StringMethods {
     // If String s contains the word "underscores", change all of the spaces
     // to underscores
     public static String formatSpaces(String s) {
-    	if(s.contains("underscores")) {
-    		
-    		
-    	}
-        return null;
+    	String replacedStr = "";
+        int index = s.indexOf("underscores");
+         
+        if(index != -1 ) {
+        	 replacedStr = s.replace(' ', '_');
+        }
+        else {
+        	 replacedStr = s;
+        }
+         
+        return replacedStr;
     }
 
     // Return the name of the person whose LAST name would appear first if they
@@ -58,23 +65,39 @@ public class _01_StringMethods {
     // You cannot assume there are no extra spaces around the name, but you can
     // assume there is only one space between the first and last name
     public static String lineLeader(String s1, String s2, String s3) {
+       String s1Trim = s1.trim();
+       String s2Trim = s2.trim();
+       String s3Trim = s3.trim();
+        
+       String[] s1Last = s1Trim.split(" ");
+       String[] s2Last = s2Trim.split(" ");
+       String[] s3Last = s3Trim.split(" ");
+
+              
+       for( int i = 0; i < s1Last.length; i++ ) {
+           if(s1Last[i].compareTo(s2Last[i])<0);
+           System.out.println(s1Last[i]);
+           System.out.println(s2Last[i]);
+
+           
+       }
  
         return null;
     }
 
     // Return the sum of all numerical digits in the String
     public static int numeralSum(String s) {
-//    	int num;
-//    	String string;
-//    	int sum = 0;
-//    	for(int i = 0; i>s.length();i++) {
-//    		if(Character.isDigit(s.charAt(i))){
-//    			string = s.charAt(i) + " "; 
-//    			num = Integer.parseInt(string);
-//    			sum = sum + num;
-//    		}
-//    	}
-    	return 0;
+    	char[] strChars = s.toCharArray();
+    	int sum = 0;
+    	
+    	for(int i = 0; i<strChars.length; i++) {
+    		if(Character.isDigit(strChars[i])) {
+    			sum += Character.getNumericValue(strChars[i]);
+    			
+    		}
+    	}
+
+    	return sum;
 
     }
 
@@ -93,14 +116,16 @@ public class _01_StringMethods {
 
     // Call Utilities.encrypt at the bottom of this file to encrypt String s
     public static String encrypt(String s, char key) {
-		return null;
+    	String encrypted = Utilities.encrypt(s.getBytes(), (byte)key);
+		return encrypted;
   
     }
 
     // Call Utilities.decrypt at the bottom of this file to decrypt the
     // cyphertext (encrypted text)
     public static String decrypt(String s, char key) {
-        return null;
+    	String decrypted = Utilities.decrypt(s, (byte)key);
+        return decrypted;
     }
 
     // Return the number of words in String s that end with String substring
@@ -120,8 +145,24 @@ public class _01_StringMethods {
     // palindromes are words or phrases are read the same forward as backward.
     // HINT: ignore/remove all punctuation and spaces in the String
     public static boolean palindrome(String s) {
+//    	char[] strChars = s.toCharArray();
+//    	int middle = strChars.length/2;
+//		if(middle%2 != 0) {
+//			middle = middle -1;
+//		}
+//		System.out.println(middle);
+//
+//    	
+//    	for(int i = 0; i<middle; i++) {
+//    		
+//    		if(strChars[i].) {
+//    			return false;
+//    		}
+//
+//    	}
+//    	
         return true;
-    }
+   }
 }
 
 class Utilities {
