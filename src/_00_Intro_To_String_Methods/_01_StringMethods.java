@@ -69,20 +69,27 @@ public class _01_StringMethods {
        String s2Trim = s2.trim();
        String s3Trim = s3.trim();
         
-       String[] s1Last = s1Trim.split(" ");
-       String[] s2Last = s2Trim.split(" ");
-       String[] s3Last = s3Trim.split(" ");
-
-              
-       for( int i = 0; i < s1Last.length; i++ ) {
-           if(s1Last[i].compareTo(s2Last[i])<0);
-           System.out.println(s1Last[i]);
-           System.out.println(s2Last[i]);
-
-           
+       String s1Last = s1Trim.split(" ")[1];
+       String s2Last = s2Trim.split(" ")[1];
+       String s3Last = s3Trim.split(" ")[1];
+       
+       if(s1Last.compareTo(s2Last)<0) {
+    	   if(s1Last.compareTo(s3Last)<0) {
+    		   return s1Trim;
+    	   }
+    	   else {
+    		   return s3Trim;
+    	   }
        }
- 
-        return null;
+       else {
+    	   if(s2Last.compareTo(s3Last)<0) {
+    		   return s2Trim;
+    	   }
+    	   else {
+    		   return s3Trim;
+    	   }
+       }
+
     }
 
     // Return the sum of all numerical digits in the String
@@ -131,36 +138,58 @@ public class _01_StringMethods {
     // Return the number of words in String s that end with String substring
     // You can assume there are no punctuation marks between words
     public static int wordsEndsWithSubstring(String s, String substring) {
-        return 0;
+    	String[] list = s.split(" ");
+    	int numOfWords = 0;
+    	int strLength = 0;
+    	int subLength = substring.length();
+
+    	
+    	for(int i = 0; i<list.length; i++) {
+    		strLength = list[i].length();
+    		if(strLength >= subLength) {
+    			if(list[i].substring(strLength - subLength).equals(substring)) {
+        			numOfWords += 1; 
+        		}
+    		}
+    	}
+        return numOfWords;
     }
 
     // Given String s, return the number of characters between the first
     // occurrence of String substring and the final occurrence
     // You can assume that substring will appear at least twice
     public static int distance(String s, String substring) {
-        return 0;
+        int firstIndex = s.indexOf(substring);
+        int index = s.indexOf(substring);
+        int lastIndex = 0;
+        
+        while( index != -1 ) {
+        	lastIndex = index;
+        	index = s.indexOf(substring, index + substring.length());
+        	
+        }
+        
+        int distance = lastIndex - firstIndex - substring.length();
+        
+        
+        return distance;
     }
 
     // Return true if String s is a palindrome
     // palindromes are words or phrases are read the same forward as backward.
     // HINT: ignore/remove all punctuation and spaces in the String
     public static boolean palindrome(String s) {
-//    	char[] strChars = s.toCharArray();
-//    	int middle = strChars.length/2;
-//		if(middle%2 != 0) {
-//			middle = middle -1;
-//		}
-//		System.out.println(middle);
-//
-//    	
-//    	for(int i = 0; i<middle; i++) {
-//    		
-//    		if(strChars[i].) {
-//    			return false;
-//    		}
-//
-//    	}
-//    	
+    	String str = s.trim();
+    	str = str.replaceAll("[?., -]", "");
+
+    	
+    	char[] strChars = str.toCharArray();
+    	int iteration = strChars.length;
+    	System.out.println(str);
+    	
+
+    	
+
         return true;
    }
 }
