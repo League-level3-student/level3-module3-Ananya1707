@@ -180,12 +180,35 @@ public class _01_StringMethods {
     // HINT: ignore/remove all punctuation and spaces in the String
     public static boolean palindrome(String s) {
     	String str = s.trim();
-    	str = str.replaceAll("[?., -]", "");
+    	str = str.replaceAll("[?.:, -]", "");
 
     	
     	char[] strChars = str.toCharArray();
-    	int iteration = strChars.length;
-    	System.out.println(str);
+    	int iterations = strChars.length/2;
+    	System.out.println(iterations);
+    	int number = 0;
+    	char c1 = 'a';
+    	char c2 = 'b';
+    	
+    	
+    	for(int i = 0; i<iterations; i++) {
+    		c1 = Character.toLowerCase(strChars[i]);
+    		c2 = Character.toLowerCase(strChars[strChars.length - 1 - i]);
+    		
+    		if(c1 == c2) {
+    			number += 1;
+    			System.out.println(strChars[i]);
+    			System.out.println(strChars[strChars.length - 1 - i]);
+
+
+    			
+    		}
+    		else {
+    			return false;
+    		}
+    	}
+
+    	
     	
 
     	
